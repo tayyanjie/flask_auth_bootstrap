@@ -1,0 +1,2 @@
+# flask_auth
+This project tries out creating a login app using Flask. The code is referenced from the tutorial found [here](https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login).
