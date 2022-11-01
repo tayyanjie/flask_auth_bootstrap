@@ -1,4 +1,4 @@
 {
     "SECRET_KEY":"47b58f2412b44d93673cd11e7b5807635ee8dcbe6633d96d79547a582560ffb8",
-    "SQLALCHEMY_DATABASE_URI":"sqlite:////mnt/c/Users/tayya/Desktop/Projects/flask_auth/projectdb.sqlite"
+    "SQLALCHEMY_DATABASE_URI":"sqlite:////mnt/c/Users/tayya/Desktop/Projects/flask_bootstrap/projectdb.sqlite"
 }

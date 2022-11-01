@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from json import load
@@ -11,6 +12,8 @@ def create_app():
 
     # Set config which includes SECRET_KEY and SQLALCHEMY_DaTABASE_URI
     app.config.from_file("config.json", load=load)
+
+    Bootstrap(app)
 
     db.init_app(app)
 
@@ -39,5 +42,3 @@ def create_app():
         db.create_all()
         
     return app
-
-
