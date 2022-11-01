@@ -1,50 +1,60 @@
-{% extends "bootstrap/base.html" %}
-
 {% block styles %}
-    {{super()}}
-    <link rel="stylesheet" href={{url_for('static', filename='bootstrap.min.css')}} />
+  {{ bootstrap.load_css() }}
+  <link rel="stylesheet" href={{url_for('static', filename='bootstrap.min.css')}} />
 {% endblock %}
     
 {% block navbar %}
-<nav class="navbar navbar-default">
+<nav class="navbar  navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="{{ url_for('main.index') }}">Authentication and Bootstrap</a>
       </div>
-      <ul class="nav navbar-nav">
-        {% if request.path=="/" %}
-        <li class="active">
-        {% else %}
-        <li>
-        {% endif %}
-        <a href="{{ url_for('main.index') }}">Home</a></li>
-        {% if current_user.is_authenticated %}
-        {% if request.path=="/profile" %}
-        <li class="active">
-        {% else %}
-        <li>
-        {% endif %}
-        <a href="{{ url_for('main.profile') }}">Profile</a></li>
-        {% endif %}
-        {% if not current_user.is_authenticated %}
-        {% if request.path=="/login" %}
-        <li class="active">
-        {% else %}
-        <li>
-        {% endif %}
-        <a href="{{ url_for('auth.login') }}">Login</a></li>
-        {% if request.path=="/signup" %}
-        <li class="active">
-        {% else %}
-        <li>
-        {% endif %}
-        <a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
-        {% endif %}
-        {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
-        {% endif %}
-      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if request.path=="/" %}
+          <li class="nav-item active">
+          {% else %}
+          <li class="nav-item">
+          {% endif %}
+          <a  class="nav-link" href="{{ url_for('main.index') }}">Home</a></li>
+          {% if current_user.is_authenticated %}
+          {% if request.path=="/profile" %}
+          <li class="nav-item active">
+          {% else %}
+          <li class="nav-item">
+          {% endif %}
+          <a class="nav-link" href="{{ url_for('main.profile') }}">Profile</a></li>
+          {% endif %}
+          {% if not current_user.is_authenticated %}
+          {% if request.path=="/login" %}
+          <li class="nav-item active">
+          {% else %}
+          <li class="nav-item">
+          {% endif %}
+          <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+          {% if request.path=="/signup" %}
+          <li class="active">
+          {% else %}
+          <li class="nav-item">
+          {% endif %}
+          <a class="nav-link" href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+          {% endif %}
+          {% if current_user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
   </nav>
 </nav>
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block scripts %}
+  <!-- Optional JavaScript --> 
+  {{ bootstrap.load_js() }}
 {% endblock %}
